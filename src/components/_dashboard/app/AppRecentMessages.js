@@ -1,7 +1,7 @@
 import faker from 'faker';
 import PropTypes from 'prop-types';
 import { Icon } from '@iconify/react';
-import { formatDistance } from 'date-fns';
+// import { formatDistance } from 'date-fns';
 import { Link as RouterLink } from 'react-router-dom';
 import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
 import mailOutline from '@iconify/icons-ant-design/mail-outline';
@@ -31,7 +31,7 @@ NewsItem.propTypes = {
 };
 
 function NewsItem({ news }) {
-  const { image, title, description, postedAt } = news;
+  const { title, description } = news;
 
   return (
     <Stack direction="row" alignItems="center" spacing={2}>

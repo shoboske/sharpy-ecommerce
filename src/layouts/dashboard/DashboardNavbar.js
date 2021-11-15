@@ -11,10 +11,10 @@ import { Box, Stack, AppBar, Toolbar, IconButton, Typography } from '@mui/materi
 // components
 import { MHidden } from '../../components/@material-extend';
 //
-import Searchbar from './Searchbar';
-import AccountPopover from './AccountPopover';
-import LanguagePopover from './LanguagePopover';
-import NotificationsPopover from './NotificationsPopover';
+// import Searchbar from './Searchbar';
+// import AccountPopover from './AccountPopover';
+// import LanguagePopover from './LanguagePopover';
+// import NotificationsPopover from './NotificationsPopover';
 
 // ----------------------------------------------------------------------
 
@@ -40,7 +40,7 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
   }
 }));
 
-function DashboardNavigation({ icon, text, path }) {
+function DashboardNavigation({ icon, text }) {
   return (
     <>
       <IconButton sx={{ mr: 1, color: 'text.primary' }}>
@@ -54,8 +54,8 @@ function DashboardNavigation({ icon, text, path }) {
 }
 DashboardNavigation.propTypes = {
   icon: PropTypes.any,
-  text: PropTypes.string,
-  path: PropTypes.string
+  text: PropTypes.string
+  // path: PropTypes.string
 };
 
 // ----------------------------------------------------------------------
