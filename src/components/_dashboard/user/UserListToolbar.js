@@ -1,8 +1,10 @@
+import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '@iconify/react';
 import searchFill from '@iconify/icons-eva/search-fill';
 import trash2Fill from '@iconify/icons-eva/trash-2-fill';
 import roundFilterList from '@iconify/icons-ic/round-filter-list';
+
 // material
 import { styled } from '@mui/material/styles';
 import {
@@ -12,8 +14,12 @@ import {
   IconButton,
   Typography,
   OutlinedInput,
-  InputAdornment
+  InputAdornment,
+  Divider,
+  Checkbox,
+  Stack
 } from '@mui/material';
+import MenuPopover from '../../MenuPopover';
 
 // ----------------------------------------------------------------------
 
@@ -42,10 +48,52 @@ const SearchStyle = styled(OutlinedInput)(({ theme }) => ({
 UserListToolbar.propTypes = {
   numSelected: PropTypes.number,
   filterName: PropTypes.string,
-  onFilterName: PropTypes.func
+  onFilterName: PropTypes.func,
+  tableHead: PropTypes.array,
+  onFilterHead: PropTypes.func,
+  searchPlaceHolder: PropTypes.string
 };
 
-export default function UserListToolbar({ numSelected, filterName, onFilterName }) {
+export default function UserListToolbar({
+  numSelected,
+  filterName,
+  onFilterName,
+  tableHead,
+  onFilterHead,
+  searchPlaceHolder
+}) {
+  const anchorRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(tableHead.map((t) => t.id));
+  const [headFilters] = useState(tableHead);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleClick = (event, name) => {
+    const selectedIndex = selected.indexOf(name);
+    let newSelected = [];
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, name);
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1));
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1)
+      );
+    }
+    setSelected(newSelected);
+    onFilterHead(
+      event,
+      headFilters.filter((t) => newSelected.includes(t.id))
+    );
+  };
   return (
     <RootStyle
       sx={{
@@ -63,7 +111,7 @@ export default function UserListToolbar({ numSelected, filterName, onFilterName 
         <SearchStyle
           value={filterName}
           onChange={onFilterName}
-          placeholder="Search user..."
+          placeholder={searchPlaceHolder}
           startAdornment={
             <InputAdornment position="start">
               <Box component={Icon} icon={searchFill} sx={{ color: 'text.disabled' }} />
@@ -71,7 +119,6 @@ export default function UserListToolbar({ numSelected, filterName, onFilterName 
           }
         />
       )}
-
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton>
@@ -79,11 +126,42 @@ export default function UserListToolbar({ numSelected, filterName, onFilterName 
           </IconButton>
         </Tooltip>
       ) : (
-        <Tooltip title="Filter list">
-          <IconButton>
-            <Icon icon={roundFilterList} />
-          </IconButton>
-        </Tooltip>
+        <>
+          <Tooltip title="Filter list">
+            <IconButton ref={anchorRef} onClick={handleOpen}>
+              <Icon icon={roundFilterList} />
+            </IconButton>
+          </Tooltip>
+          <MenuPopover
+            open={open}
+            onClose={handleClose}
+            anchorEl={anchorRef.current}
+            sx={{ width: 220 }}
+          >
+            {headFilters.length &&
+              headFilters.map((t) => {
+                const isItemSelected = selected.indexOf(t.id) !== -1;
+                return (
+                  t.id && (
+                    <>
+                      <Box sx={{ my: 1.5, px: 2.5 }}>
+                        <Stack direction="row" alignItems="center">
+                          <Checkbox
+                            checked={isItemSelected}
+                            onChange={(event) => handleClick(event, t.id)}
+                          />
+                          <Typography variant="subtitle1" noWrap>
+                            {t.label}
+                          </Typography>
+                        </Stack>
+                      </Box>
+                      <Divider sx={{ my: 1 }} />
+                    </>
+                  )
+                );
+              })}
+          </MenuPopover>
+        </>
       )}
     </RootStyle>
   );

@@ -9,6 +9,7 @@ import DashboardApp from './pages/DashboardApp';
 // import Products from './pages/Products';
 // import Blog from './pages/Blog';
 // import User from './pages/User';
+import Order from './pages/Order';
 import NotFound from './pages/Page404';
 import EmptyPageApp from './pages/EmptyPageApp';
 
@@ -22,6 +23,7 @@ export default function Router() {
       children: [
         { element: <Navigate to="/dashboard/home" replace /> },
         { path: 'home', element: <DashboardApp /> },
+        { path: 'orders', element: <Order /> },
         // { path: 'user', element: <User /> },
         // { path: 'products', element: <Products /> },
         // { path: 'blog', element: <Blog /> }
