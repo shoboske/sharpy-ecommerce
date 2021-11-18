@@ -64,7 +64,7 @@ export default function UserListToolbar({
 }) {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(tableHead.map((t) => t.id));
+  const [selected, setSelected] = useState(tableHead && tableHead.map((t) => t.id));
   const [headFilters] = useState(tableHead);
 
   const handleOpen = () => {
@@ -127,18 +127,20 @@ export default function UserListToolbar({
         </Tooltip>
       ) : (
         <>
-          <Tooltip title="Filter list">
-            <IconButton ref={anchorRef} onClick={handleOpen}>
-              <Icon icon={roundFilterList} />
-            </IconButton>
-          </Tooltip>
+          {headFilters && (
+            <Tooltip title="Filter list">
+              <IconButton ref={anchorRef} onClick={handleOpen}>
+                <Icon icon={roundFilterList} />
+              </IconButton>
+            </Tooltip>
+          )}
           <MenuPopover
             open={open}
             onClose={handleClose}
             anchorEl={anchorRef.current}
             sx={{ width: 220 }}
           >
-            {headFilters.length &&
+            {headFilters &&
               headFilters.map((t) => {
                 const isItemSelected = selected.indexOf(t.id) !== -1;
                 return (

@@ -6,7 +6,7 @@ import DashboardLayout from './layouts/dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import DashboardApp from './pages/DashboardApp';
-// import Products from './pages/Products';
+import Products from './pages/Inventory';
 // import Blog from './pages/Blog';
 // import User from './pages/User';
 import Order from './pages/Order';
@@ -24,8 +24,8 @@ export default function Router() {
         { element: <Navigate to="/dashboard/home" replace /> },
         { path: 'home', element: <DashboardApp /> },
         { path: 'orders', element: <Order /> },
+        { path: 'inventory', element: <Products /> },
         // { path: 'user', element: <User /> },
-        // { path: 'products', element: <Products /> },
         // { path: 'blog', element: <Blog /> }
         { path: '*', element: <EmptyPageApp /> }
       ]

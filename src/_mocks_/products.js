@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { sample } from 'lodash';
+// import { sample } from 'lodash';
 // utils
 import { mockImgProduct } from '../utils/mockImages';
 
@@ -51,8 +51,9 @@ const products = [...Array(24)].map((_, index) => {
     id: faker.datatype.uuid(),
     cover: mockImgProduct(setIndex),
     name: PRODUCT_NAME[index],
-    price: faker.datatype.number({ min: 4, max: 99, precision: 0.01 }),
-    priceSale: setIndex % 3 ? null : faker.datatype.number({ min: 19, max: 29, precision: 0.01 }),
+    price: faker.datatype.number({ min: 600, max: 1500, precision: 0.01 }),
+    // priceSale: setIndex % 3 ? null : faker.datatype.number({ min: 19, max: 29, precision: 0.01 }),
+    priceSale: null,
     colors:
       (setIndex === 1 && PRODUCT_COLOR.slice(0, 2)) ||
       (setIndex === 2 && PRODUCT_COLOR.slice(1, 3)) ||
@@ -61,7 +62,8 @@ const products = [...Array(24)].map((_, index) => {
       (setIndex === 23 && PRODUCT_COLOR.slice(4, 6)) ||
       (setIndex === 24 && PRODUCT_COLOR.slice(5, 6)) ||
       PRODUCT_COLOR,
-    status: sample(['sale', 'new', '', ''])
+    // status: sample(['sale', 'new', '', ''])
+    status: ''
   };
 });
 
