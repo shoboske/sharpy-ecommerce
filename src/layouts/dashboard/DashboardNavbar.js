@@ -46,7 +46,11 @@ function DashboardNavigation({ icon, text }) {
       <IconButton sx={{ mr: 1, color: 'text.primary' }}>
         <Icon icon={icon} />
       </IconButton>
-      <Typography color="text.primary" marginRight="2em">
+      <Typography
+        color="text.primary"
+        marginRight="2em"
+        sx={{ display: { xs: 'none', md: 'block' } }}
+      >
         {text}
       </Typography>
     </>
@@ -80,7 +84,11 @@ export default function DashboardNavbar({ onOpenSidebar }) {
         <Box sx={{ flexGrow: 1 }} />
 
         <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
-          <Typography color="text.primary" marginRight="1em">
+          <Typography
+            color="text.primary"
+            marginRight="1em"
+            sx={{ display: { xs: 'none', md: 'block' } }}
+          >
             Go Shopping
           </Typography>
           <IconButton sx={{ mr: 1, color: 'text.primary' }}>
