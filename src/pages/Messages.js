@@ -13,7 +13,8 @@ import {
   Card,
   CardHeader,
   Avatar,
-  CardContent
+  CardContent,
+  CardActionArea
 } from '@mui/material';
 import { Icon } from '@iconify/react';
 import outlineEdit from '@iconify/icons-ic/outline-edit';
@@ -104,7 +105,7 @@ const renderSearch = () => (
 const renderChatList = ({ id, name, message, avatarUrl }, handleClick) => (
   <Card
     sx={{
-      minHeight: 100,
+      minHeight: { xs: 50, md: 100, lg: 150 },
       width: { xs: 200, md: 250, lg: 345 },
       border: 'solid 1px grey',
       marginY: 1,
@@ -112,29 +113,35 @@ const renderChatList = ({ id, name, message, avatarUrl }, handleClick) => (
     }}
     onClick={() => handleClick(id)}
   >
-    <CardHeader
-      avatar={
-        <>
-          <Stack direction="row" justifyContent="space-between" alignItems="center">
-            <Avatar src={avatarUrl} sx={{ width: 56, height: 56 }} />
-            <Typography
-              noWrap
-              variant="body1"
-              sx={{ paddingX: 1, paddingY: 0.5, maxWidth: { xs: 100, md: 300, lg: 345 } }}
-            >
-              {name}
-            </Typography>
-          </Stack>
-        </>
-      }
-      disableTypography
-      sx={{ paddingX: 1, paddingY: 0.5 }}
-    />
-    <CardContent sx={{ padding: 1 }}>
-      <Typography variant="body2" color="text.secondary" noWrap>
-        {message}
-      </Typography>
-    </CardContent>
+    <CardActionArea>
+      <CardHeader
+        avatar={
+          <>
+            <Stack direction="row" justifyContent="space-between" alignItems="center">
+              <Avatar src={avatarUrl} sx={{ width: 56, height: 56 }} />
+              <Typography
+                noWrap
+                variant="body1"
+                sx={{
+                  paddingX: 1,
+                  paddingY: 0.5,
+                  maxWidth: { xs: 100, md: 300, lg: 345 }
+                }}
+              >
+                {name}
+              </Typography>
+            </Stack>
+          </>
+        }
+        disableTypography
+        sx={{ paddingX: 1, paddingY: 0.5 }}
+      />
+      <CardContent sx={{ padding: 1, display: { xs: 'none', md: 'block' } }}>
+        <Typography variant="body2" color="text.secondary" noWrap>
+          {message}
+        </Typography>
+      </CardContent>
+    </CardActionArea>
   </Card>
 );
 
@@ -144,10 +151,12 @@ export default function Messages() {
   useMemo(async () => {
     // Chat content is displayed using ChatController
     chatCtl.setActionRequest({ type: 'text', always: true, self: true }, () => null);
-  }, [chatCtl]);
+    chatCtl.setMessages(MESSAGES.filter((m) => m.userId === activeUser.id));
+  }, [chatCtl, activeUser.id]);
 
   const handleClick = (userId) => {
     setActiveUser(CHATLIST.find((u) => u.id === userId));
+    chatCtl.clearMessages();
     chatCtl.setMessages(MESSAGES.filter((m) => m.userId === userId));
   };
 
