@@ -105,7 +105,7 @@ const renderSearch = () => (
 const renderChatList = ({ id, name, message, avatarUrl }, handleClick) => (
   <Card
     sx={{
-      minHeight: { xs: 50, md: 100, lg: 150 },
+      minHeight: { xs: 50, md: 50, lg: 50 },
       width: { xs: 200, md: 250, lg: 345 },
       border: 'solid 1px grey',
       marginY: 1,
