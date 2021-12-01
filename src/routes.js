@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import DashboardApp from './pages/DashboardApp';
 import Products from './pages/Inventory';
+import Messages from './pages/Messages';
 // import Blog from './pages/Blog';
 // import User from './pages/User';
 import Profile from './pages/Profile';
@@ -26,6 +27,7 @@ export default function Router() {
         { path: 'home', element: <DashboardApp /> },
         { path: 'orders', element: <Order /> },
         { path: 'inventory', element: <Products /> },
+        { path: 'messages', element: <Messages /> },
         // { path: 'user', element: <User /> },
         // { path: 'blog', element: <Blog /> }
         { path: '*', element: <EmptyPageApp /> }

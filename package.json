@@ -48,6 +48,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "apexcharts": "^3.28.3",
     "change-case": "^4.1.2",
+    "chat-ui-react": "^0.3.0",
     "date-fns": "^2.24.0",
     "faker": "^5.5.3",
     "formik": "^2.2.9",
