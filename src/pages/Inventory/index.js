@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { filter } from 'lodash';
 import { Icon } from '@iconify/react';
+import { Link } from 'react-router-dom';
 // material
 import { Container, IconButton, Stack, Tooltip, Typography } from '@mui/material';
-import folderUploadOutline from '@iconify/icons-ant-design/plus';
+import plus from '@iconify/icons-ant-design/plus';
 // components
-import Page from '../components/Page';
-import { UserListToolbar } from '../components/_dashboard/user';
-import { ProductList } from '../components/_dashboard/products';
+import Page from '../../components/Page';
+import { UserListToolbar } from '../../components/_dashboard/user';
+import { ProductList } from '../../components/_dashboard/products';
 
 //
-import PRODUCTS from '../_mocks_/products';
+import PRODUCTS from '../../_mocks_/products';
 
 // ----------------------------------------------------------------------
 
@@ -60,11 +61,13 @@ export default function Inventory() {
           <Typography variant="h4" sx={{ mb: 5 }}>
             Inventory ({PRODUCTS.length})
           </Typography>
-          <Tooltip title="add">
-            <IconButton sx={{ color: 'text.primary' }}>
-              <Icon icon={folderUploadOutline} height="1.5em" />
-            </IconButton>
-          </Tooltip>
+          <Link to="create">
+            <Tooltip title="add">
+              <IconButton sx={{ color: 'text.primary' }}>
+                <Icon icon={plus} height="1.5em" />
+              </IconButton>
+            </Tooltip>
+          </Link>
         </Stack>
 
         <UserListToolbar searchPlaceHolder="Search" onFilterName={handleFilterByName} />
