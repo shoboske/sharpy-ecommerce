@@ -1,21 +1,12 @@
 import PropTypes from 'prop-types';
 import { Icon } from '@iconify/react';
 import menu2Fill from '@iconify/icons-eva/menu-2-fill';
-import downloadOutline from '@iconify/icons-eva/download-outline';
-import folderUploadOutline from '@iconify/icons-ic/outline-drive-folder-upload';
-import shoppingBasketOutline from '@iconify/icons-ic/outline-shopping-basket';
 import shoppingBagOutline from '@iconify/icons-ic/outline-shopping-bag';
 // material
 import { alpha, styled } from '@mui/material/styles';
-import { Box, Stack, AppBar, Toolbar, IconButton, Typography } from '@mui/material';
+import { Box, Stack, AppBar, Toolbar, IconButton, Typography, Button } from '@mui/material';
 // components
 import { MHidden } from '../../components/@material-extend';
-//
-// import Searchbar from './Searchbar';
-// import AccountPopover from './AccountPopover';
-// import LanguagePopover from './LanguagePopover';
-// import NotificationsPopover from './NotificationsPopover';
-
 // ----------------------------------------------------------------------
 
 const DRAWER_WIDTH = 280;
@@ -59,7 +50,6 @@ function DashboardNavigation({ icon, text }) {
 DashboardNavigation.propTypes = {
   icon: PropTypes.any,
   text: PropTypes.string
-  // path: PropTypes.string
 };
 
 // ----------------------------------------------------------------------
@@ -78,20 +68,22 @@ export default function DashboardNavbar({ onOpenSidebar }) {
           </IconButton>
         </MHidden>
 
-        <DashboardNavigation icon={folderUploadOutline} text="Sales Orders" />
-        <DashboardNavigation icon={downloadOutline} text="Purchase Orders" />
-        <DashboardNavigation icon={shoppingBasketOutline} text="Products" />
         <Box sx={{ flexGrow: 1 }} />
 
         <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
-          <Typography
-            color="text.primary"
-            marginRight="1em"
-            sx={{ display: { xs: 'none', md: 'block' } }}
+          <Button
+            sx={{ mr: 1, color: 'text.primary', display: { xs: 'none', md: 'flex' } }}
+            endIcon={<Icon icon={shoppingBagOutline} />}
           >
-            Go Shopping
-          </Typography>
-          <IconButton sx={{ mr: 1, color: 'text.primary' }}>
+            <Typography
+              color="text.primary"
+              marginRight="1em"
+              sx={{ display: { xs: 'none', md: 'block' } }}
+            >
+              Go Shopping
+            </Typography>
+          </Button>
+          <IconButton sx={{ color: 'text.primary', display: { xs: 'flex', md: 'none' } }}>
             <Icon icon={shoppingBagOutline} />
           </IconButton>
         </Stack>

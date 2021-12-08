@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import { Icon } from '@iconify/react';
-import PropTypes from 'prop-types';
 
 // material
 import {
   Avatar,
   Button,
-  Card,
-  CardHeader,
   Container,
   Divider,
   FormControlLabel,
@@ -23,53 +20,29 @@ import outlinePlus from '@iconify/icons-ic/outline-plus';
 import outlineCheck from '@iconify/icons-ic/outline-check';
 // components
 import Page from '../components/Page';
+import { ProfileSettingsCard } from '../components/profile';
 import account from '../_mocks_/account';
 
 //
 
 // ----------------------------------------------------------------------
 
-const ProfileSettingsCard = ({ icon, title, action, children }) => (
-  <Card>
-    <Stack spacing={3} sx={{ p: 3, px: 2 }}>
-      {children}
-    </Stack>
-    {title && (
-      <CardHeader
-        title={title}
-        disableTypography
-        sx={{ backgroundColor: 'gray', pb: 2, color: 'black' }}
-        action={
-          <IconButton aria-label="settings" onClick={() => action}>
-            <Icon icon={icon} color="black" />
-          </IconButton>
-        }
-      />
-    )}
-  </Card>
-);
-ProfileSettingsCard.propTypes = {
-  icon: PropTypes.any,
-  title: PropTypes.string,
-  action: PropTypes.func,
-  children: PropTypes.any
-};
 export default function Profile() {
   function renderProfileDetails(account) {
     return (
-      <Grid container spacing={2} maxWidth="80%">
+      <Grid container spacing={2} maxWidth="100%" justifyContent="center">
         <Grid item xs={12} md={4}>
           <Avatar
             alt={account.displayName}
             src={account.photoURL}
             sx={{
-              width: { xs: '6.5em', md: 'auto' },
-              height: { xs: '6.5em', md: 'auto' },
+              width: { xs: '6.5em', md: '10.6em' },
+              height: { xs: '6.5em', md: '10.6em' },
               marginRight: '2em'
             }}
           />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12} md={8}>
           <Stack direction="column" justifyContent="space-between">
             <Typography variant="h4" marginBottom="1em">
               {account.displayName}
