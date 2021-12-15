@@ -3,12 +3,12 @@ import { Box, Grid, Container, Typography } from '@mui/material';
 // components
 import Page from '../components/Page';
 import {
-  AppPendingOrders,
   AppTotalEarnings,
   AppCompletedOrders,
   AppRecentOrders,
   AppRecentMessages,
-  AppTotalSales
+  AppTotalSales,
+  AppTodaySales
 } from '../components/_dashboard/app';
 
 // ----------------------------------------------------------------------
@@ -25,7 +25,7 @@ export default function DashboardApp() {
             <AppTotalSales />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <AppPendingOrders />
+            <AppTodaySales />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <AppCompletedOrders />

@@ -1,27 +1,27 @@
 import { merge } from 'lodash';
 //
 import { BaseOptionChart } from '../../charts';
-import { totalSalesLabels, totalSales } from '../../../_mocks_/sales';
+import { todaySalesLabels, todaySales } from '../../../_mocks_/sales';
 import { DashboardChartCard } from './DashboardChartCard';
 
 // ----------------------------------------------------------------------
 
 const CHART_DATA = [
   {
-    name: 'Total Sales',
+    name: 'Sales Today',
     type: 'area',
-    data: totalSales
+    data: todaySales
   }
 ];
 
-export default function AppTotalSales() {
+export default function AppTodaySales() {
   const chartOptions = merge(BaseOptionChart(), {
     stroke: { width: [2] },
     plotOptions: { bar: { columnWidth: '11%', borderRadius: 4 } },
-    fill: { type: 'solid', colors: ['#87cefa'] },
-    labels: totalSalesLabels,
+    fill: { type: 'solid', colors: ['#90EE90'] },
+    labels: todaySalesLabels,
     xaxis: {
-      type: 'datetime',
+      type: 'categories',
       show: false,
       labels: {
         show: false
@@ -29,7 +29,7 @@ export default function AppTotalSales() {
     },
     yaxis: { show: false },
     tooltip: {
-      shared: true,
+      shared: false,
       intersect: false,
       y: {
         formatter: (y) => {
@@ -53,13 +53,13 @@ export default function AppTotalSales() {
         }
       }
     },
-    colors: ['#00f']
+    colors: ['#32CD32']
   });
 
   return (
     <DashboardChartCard
       chartOptions={chartOptions}
-      title="TOTAL SALES"
+      title="SALES TODAY"
       value={0}
       series={CHART_DATA}
     />

@@ -11,7 +11,9 @@ import { fPercent } from '../../../utils/formatNumber';
 export function DashboardChartCard({ chartOptions, title, value = 0, series = [] }) {
   function renderPercentageChange(series) {
     if (series.length < 1) return <></>;
-    const changeType = series[0].increase > 0;
+
+    const trend = getPercentageChange(series[0].data);
+    const changeType = trend >= 0;
 
     return (
       <Typography
@@ -20,21 +22,28 @@ export function DashboardChartCard({ chartOptions, title, value = 0, series = []
         display="flex"
         color={changeType ? 'green' : 'red'}
       >
-        {fPercent(series[0].increase)}
+        {fPercent(trend)}
         <Icon icon={changeType ? arrowUpFill : arrowDownFill} width={30} />
       </Typography>
     );
   }
+  function getPercentageChange(list = []) {
+    if (list.length < 2) return 0;
+
+    const oldValue = list[list.length - 2];
+    const newValue = list[list.length - 1];
+    return ((newValue - oldValue) / oldValue) * 100;
+  }
 
   return (
-    <Card sx={{ border: 1, borderColor: chartOptions.colors[0] }}>
+    <Card sx={{ ':hover': { border: 1, borderColor: chartOptions.colors[0] } }}>
       <CardHeader sx={{ pb: 0, mb: 0 }} title={title} />
       <Box sx={{ p: 0, pb: 1, mt: 0 }} dir="ltr">
         <Stack direction="row" justifyContent="space-between" paddingX={2}>
           <Typography variant="h4">{`₺ ${value}`}</Typography>
           {renderPercentageChange(series)}
         </Stack>
-        <ReactApexChart type="area" series={series} options={chartOptions} height={150} />
+        <ReactApexChart type="area" series={series} options={chartOptions} height={100} />
       </Box>
     </Card>
   );
