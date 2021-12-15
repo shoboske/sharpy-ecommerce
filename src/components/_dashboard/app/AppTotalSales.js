@@ -1,10 +1,9 @@
 import { merge } from 'lodash';
-import ReactApexChart from 'react-apexcharts';
 // material
-import { Card, CardHeader, Box } from '@mui/material';
 //
 import { BaseOptionChart } from '../../charts';
 import { chartLabels, totalSales } from '../../../_mocks_/sales';
+import { DashboardChartCard } from './DashboardChartCard';
 
 // ----------------------------------------------------------------------
 
@@ -12,9 +11,14 @@ const CHART_DATA = [
   {
     name: 'Total Sales',
     type: 'area',
-    data: totalSales
+    data: totalSales,
+    increase: percentageChange(totalSales[totalSales.length - 2], totalSales[totalSales.length - 1])
   }
 ];
+
+export function percentageChange(oldValue, newValue) {
+  return ((newValue - oldValue) / oldValue) * 100;
+}
 
 export default function AppTotalSales() {
   const chartOptions = merge(BaseOptionChart(), {
@@ -53,11 +57,11 @@ export default function AppTotalSales() {
   });
 
   return (
-    <Card sx={{ border: 1, borderColor: '#00f' }}>
-      <CardHeader title="TOTAL SALES" subheader={`₺ ${0}`} sx={{ pb: 0, mb: 0 }} />
-      <Box sx={{ p: 0, pb: 1, mt: 0 }} dir="ltr">
-        <ReactApexChart type="area" series={CHART_DATA} options={chartOptions} height={150} />
-      </Box>
-    </Card>
+    <DashboardChartCard
+      chartOptions={chartOptions}
+      title="TOTAL SALES"
+      value={0}
+      series={CHART_DATA}
+    />
   );
 }
