@@ -4,7 +4,7 @@ import ReactApexChart from 'react-apexcharts';
 import { Card, CardHeader, Box } from '@mui/material';
 //
 import { BaseOptionChart } from '../../charts';
-import { totalSales } from '../../../_mocks_/sales';
+import { chartLabels, totalSales } from '../../../_mocks_/sales';
 
 // ----------------------------------------------------------------------
 
@@ -20,20 +20,8 @@ export default function AppTotalSales() {
   const chartOptions = merge(BaseOptionChart(), {
     stroke: { width: [2] },
     plotOptions: { bar: { columnWidth: '11%', borderRadius: 4 } },
-    fill: { type: 'solid' },
-    labels: [
-      '01/01/2003',
-      '02/01/2003',
-      '03/01/2003',
-      '04/01/2003',
-      '05/01/2003',
-      '06/01/2003',
-      '07/01/2003',
-      '08/01/2003',
-      '09/01/2003',
-      '10/01/2003',
-      '11/01/2003'
-    ],
+    fill: { type: 'solid', colors: ['#87cefa'] },
+    labels: chartLabels,
     xaxis: { type: 'datetime', show: false },
     yaxis: { show: false },
     tooltip: {
@@ -60,12 +48,13 @@ export default function AppTotalSales() {
           show: false
         }
       }
-    }
+    },
+    colors: ['#00f']
   });
 
   return (
     <Card>
-      <CardHeader title="TOTAL SALES" subheader={0} sx={{ pb: 0, mb: 0 }} />
+      <CardHeader title="TOTAL SALES" subheader={`₺ ${0}`} sx={{ pb: 0, mb: 0 }} />
       <Box sx={{ p: 0, pb: 1, mt: 0 }} dir="ltr">
         <ReactApexChart type="area" series={CHART_DATA} options={chartOptions} height={150} />
       </Box>
