@@ -53,7 +53,7 @@ export default function AppTotalSales() {
   });
 
   return (
-    <Card>
+    <Card sx={{ border: 1, borderColor: '#00f' }}>
       <CardHeader title="TOTAL SALES" subheader={`₺ ${0}`} sx={{ pb: 0, mb: 0 }} />
       <Box sx={{ p: 0, pb: 1, mt: 0 }} dir="ltr">
         <ReactApexChart type="area" series={CHART_DATA} options={chartOptions} height={150} />
