@@ -16,9 +16,9 @@ const CHART_DATA = [
 
 export default function AppTodaySales() {
   const chartOptions = merge(BaseOptionChart(), {
-    stroke: { width: [2] },
+    stroke: { width: [3] },
     plotOptions: { bar: { columnWidth: '11%', borderRadius: 4 } },
-    fill: { type: 'solid', colors: ['#90EE90'] },
+    fill: { type: 'solid', colors: ['#E6F8F0'] },
     labels: todaySalesLabels,
     xaxis: {
       type: 'categories',
@@ -53,7 +53,7 @@ export default function AppTodaySales() {
         }
       }
     },
-    colors: ['#32CD32']
+    colors: ['#2DFFA2']
   });
 
   return (

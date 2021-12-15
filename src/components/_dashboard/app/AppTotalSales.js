@@ -16,9 +16,9 @@ const CHART_DATA = [
 
 export default function AppTotalSales() {
   const chartOptions = merge(BaseOptionChart(), {
-    stroke: { width: [2] },
+    stroke: { width: [3] },
     plotOptions: { bar: { columnWidth: '11%', borderRadius: 4 } },
-    fill: { type: 'solid', colors: ['#87cefa'] },
+    fill: { type: 'solid', colors: ['#E3F1FE'] },
     labels: totalSalesLabels,
     xaxis: {
       type: 'datetime',
@@ -53,7 +53,7 @@ export default function AppTotalSales() {
         }
       }
     },
-    colors: ['#00f']
+    colors: ['#0081F9']
   });
 
   return (
