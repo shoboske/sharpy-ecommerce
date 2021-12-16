@@ -1,24 +1,24 @@
 import { merge } from 'lodash';
 //
 import { BaseOptionChart } from '../../charts';
-import { monthlyLabels, totalSales } from '../../../_mocks_/sales';
+import { monthlyLabels, totalCustomers } from '../../../_mocks_/sales';
 import { DashboardChartCard } from './DashboardChartCard';
 
 // ----------------------------------------------------------------------
 
 const CHART_DATA = [
   {
-    name: 'Total Sales',
+    name: 'Total Customers',
     type: 'area',
-    data: totalSales
+    data: totalCustomers
   }
 ];
 
-export default function AppTotalSales() {
+export default function AppTotalCustomers() {
   const chartOptions = merge(BaseOptionChart(), {
     stroke: { width: [3] },
     plotOptions: { bar: { columnWidth: '11%', borderRadius: 4 } },
-    fill: { type: 'solid', colors: ['#E3F1FE'] },
+    fill: { type: 'solid', colors: ['#FEF6E4'] },
     labels: monthlyLabels,
     xaxis: {
       type: 'datetime',
@@ -53,14 +53,14 @@ export default function AppTotalSales() {
         }
       }
     },
-    colors: ['#0081F9']
+    colors: ['#FFC543']
   });
 
   return (
     <DashboardChartCard
       chartOptions={chartOptions}
-      title="TOTAL SALES"
-      value={`₺ ${0}`}
+      title="TOTAL CUSTOMERS"
+      value={0}
       series={CHART_DATA}
     />
   );

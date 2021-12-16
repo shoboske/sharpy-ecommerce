@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 //
 import { BaseOptionChart } from '../../charts';
-import { todaySalesLabels, todaySales } from '../../../_mocks_/sales';
+import { hourlyLabels, todaySales } from '../../../_mocks_/sales';
 import { DashboardChartCard } from './DashboardChartCard';
 
 // ----------------------------------------------------------------------
@@ -19,7 +19,7 @@ export default function AppTodaySales() {
     stroke: { width: [3] },
     plotOptions: { bar: { columnWidth: '11%', borderRadius: 4 } },
     fill: { type: 'solid', colors: ['#E6F8F0'] },
-    labels: todaySalesLabels,
+    labels: hourlyLabels,
     xaxis: {
       type: 'categories',
       show: false,
@@ -60,7 +60,7 @@ export default function AppTodaySales() {
     <DashboardChartCard
       chartOptions={chartOptions}
       title="SALES TODAY"
-      value={0}
+      value={`₺ ${0}`}
       series={CHART_DATA}
     />
   );

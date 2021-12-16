@@ -1,6 +1,6 @@
 import faker from 'faker';
 
-export const totalSalesLabels = [
+export const monthlyLabels = [
   '01/01/2021',
   '02/01/2021',
   '03/01/2021',
@@ -13,14 +13,20 @@ export const totalSalesLabels = [
   '10/01/2021',
   '11/01/2021'
 ];
-export const todaySalesLabels = [...Array(11)]
-  .map(() => faker.date.recent(0.3).toLocaleTimeString())
+
+const d = new Date();
+export const hourlyLabels = [...Array(12)]
+  .map(() => d.setHours(d.getHours() - 2, 0, 0) && d.toLocaleTimeString())
   .sort((date1, date2) => date1 - date2);
 
 export const totalSales = [...Array(11)].map(() =>
   faker.datatype.number({ min: 2300, max: 2500, precision: 0.01 })
 );
 
-export const todaySales = [...Array(11)].map(() =>
+export const todaySales = [...Array(12)].map(() =>
   faker.datatype.number({ min: 0, max: 100, precision: 0.01 })
+);
+
+export const totalCustomers = [...Array(11)].map(() =>
+  faker.datatype.number({ min: 12, max: 150, precision: 0.01 })
 );
