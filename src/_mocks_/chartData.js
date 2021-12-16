@@ -30,3 +30,7 @@ export const todaySales = [...Array(12)].map(() =>
 export const totalCustomers = [...Array(11)].map(() =>
   faker.datatype.number({ min: 12, max: 150, precision: 0.01 })
 );
+
+export const todayCustomers = [...Array(12)].map(() =>
+  faker.datatype.number({ min: 5, max: 9, precision: 0.01 })
+);

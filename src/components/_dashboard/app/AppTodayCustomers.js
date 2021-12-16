@@ -1,24 +1,24 @@
 import { merge } from 'lodash';
 //
 import { BaseOptionChart } from '../../charts';
-import { hourlyLabels, todaySales } from '../../../_mocks_/chartData';
+import { hourlyLabels, todayCustomers } from '../../../_mocks_/chartData';
 import { DashboardChartCard } from './DashboardChartCard';
 
 // ----------------------------------------------------------------------
 
 const CHART_DATA = [
   {
-    name: 'Sales Today',
+    name: 'New Customers',
     type: 'area',
-    data: todaySales
+    data: todayCustomers
   }
 ];
 
-export default function AppTodaySales() {
+export default function AppTodayCustomers() {
   const chartOptions = merge(BaseOptionChart(), {
     stroke: { width: [3] },
     plotOptions: { bar: { columnWidth: '11%', borderRadius: 4 } },
-    fill: { type: 'solid', colors: ['#E6F8F0'] },
+    fill: { type: 'solid', colors: ['#FCEAEE'] },
     labels: hourlyLabels,
     xaxis: {
       type: 'categories',
@@ -53,14 +53,14 @@ export default function AppTodaySales() {
         }
       }
     },
-    colors: ['#2DFFA2']
+    colors: ['#FF597E']
   });
 
   return (
     <DashboardChartCard
       chartOptions={chartOptions}
-      title="SALES TODAY"
-      value={`₺ ${0}`}
+      title="NEW CUSTOMERS"
+      value={0}
       series={CHART_DATA}
     />
   );

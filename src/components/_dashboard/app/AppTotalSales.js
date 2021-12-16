@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 //
 import { BaseOptionChart } from '../../charts';
-import { monthlyLabels, totalSales } from '../../../_mocks_/sales';
+import { monthlyLabels, totalSales } from '../../../_mocks_/chartData';
 import { DashboardChartCard } from './DashboardChartCard';
 
 // ----------------------------------------------------------------------

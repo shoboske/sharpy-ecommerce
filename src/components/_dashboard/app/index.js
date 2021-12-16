@@ -16,3 +16,4 @@ export { default as AppRecentMessages } from './AppRecentMessages';
 export { default as AppTotalSales } from './AppTotalSales';
 export { default as AppTodaySales } from './AppTodaySales';
 export { default as AppTotalCustomers } from './AppTotalCustomers';
+export { default as AppTodayCustomers } from './AppTodayCustomers';

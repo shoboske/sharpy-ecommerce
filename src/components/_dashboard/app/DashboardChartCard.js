@@ -39,7 +39,7 @@ export function DashboardChartCard({ chartOptions, title, value = 0, series = []
     <Card sx={{ ':hover': { border: 1, borderColor: chartOptions.colors[0] } }}>
       <CardHeader sx={{ pb: 0, mb: 0 }} title={title} />
       <Box sx={{ p: 0, pb: 1, mt: 0 }} dir="ltr">
-        <Stack direction="row" justifyContent="space-between" paddingX={2}>
+        <Stack direction="row" justifyContent="space-between" paddingX={3}>
           <Typography variant="h4">{value}</Typography>
           {renderPercentageChange(series)}
         </Stack>
