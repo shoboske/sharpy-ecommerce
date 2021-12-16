@@ -20,7 +20,7 @@ export function DashboardChartCard({ chartOptions, title, value = 0, series = []
         variant="caption"
         alignItems="center"
         display="flex"
-        color={changeType ? 'green' : 'red'}
+        color={changeType ? '#22B573' : '#BD2121'}
       >
         {fPercent(trend)}
         <Icon icon={changeType ? arrowUpFill : arrowDownFill} width={30} />
