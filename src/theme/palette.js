@@ -93,6 +93,8 @@ const CHART_COLORS = {
   red: ['#FF6C40', '#FF8F6D', '#FFBD98', '#FFF2D4']
 };
 
+const CARD_HEADER = '#D2D9E3';
+
 const palette = {
   common: { black: '#000', white: '#fff' },
   primary: { ...PRIMARY },
@@ -116,7 +118,8 @@ const palette = {
     focus: GREY[500_24],
     hoverOpacity: 0.08,
     disabledOpacity: 0.48
-  }
+  },
+  cardHeader: CARD_HEADER
 };
 
 export default palette;

@@ -4,11 +4,13 @@ import { Box, Grid, Container, Typography } from '@mui/material';
 import Page from '../components/Page';
 import {
   AppRecentOrders,
-  AppRecentMessages,
   AppTotalSales,
   AppTodaySales,
   AppTotalCustomers,
-  AppTodayCustomers
+  AppTodayCustomers,
+  AppTopCustomers,
+  AppSalesReport,
+  AppTopSelling
 } from '../components/_dashboard/app';
 
 // ----------------------------------------------------------------------
@@ -34,12 +36,20 @@ export default function DashboardApp() {
             <AppTodayCustomers />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={6}>
-            <AppRecentOrders />
+          <Grid item xs={12} md={8} lg={8}>
+            <AppSalesReport />
           </Grid>
 
-          <Grid item xs={12} md={6} lg={6}>
-            <AppRecentMessages />
+          <Grid item xs={12} md={4} lg={4}>
+            <AppTopCustomers />
+          </Grid>
+
+          <Grid item xs={12} md={4} lg={4}>
+            <AppTopSelling />
+          </Grid>
+
+          <Grid item xs={12} md={8} lg={8}>
+            <AppRecentOrders />
           </Grid>
         </Grid>
       </Container>

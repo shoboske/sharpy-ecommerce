@@ -9,6 +9,7 @@ import { Box, Stack, Link, Card, Button, Divider, Typography, CardHeader } from 
 // utils
 import { mockImgCover } from '../../../utils/mockImages';
 //
+import palette from '../../../theme/palette';
 import Scrollbar from '../../Scrollbar';
 
 // ----------------------------------------------------------------------
@@ -57,9 +58,13 @@ function NewsItem({ news }) {
 export default function AppRecentOrders() {
   return (
     <Card>
-      <CardHeader title="Recent Orders" disableTypography sx={{ backgroundColor: 'gray', pb: 2 }} />
+      <CardHeader
+        title="Recent Orders"
+        disableTypography
+        sx={{ backgroundColor: palette.cardHeader, pb: 2 }}
+      />
 
-      <Scrollbar>
+      <Scrollbar sx={{ height: '40vh' }}>
         <Stack spacing={3} sx={{ p: 3, pr: 1, pl: 2 }}>
           {NEWS.map((news) => (
             <>
