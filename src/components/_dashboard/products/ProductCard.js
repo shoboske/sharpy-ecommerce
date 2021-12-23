@@ -48,7 +48,7 @@ export default function ShopProductCard({ product }) {
         <ProductImgStyle alt={name} src={cover} />
       </Box>
 
-      <Stack spacing={2} sx={{ p: 3 }} color="white">
+      <Stack spacing={2} sx={{ p: 3, backgroundColor: '#2B2B2B' }} color="white">
         <Link to="#" color="inherit" underline="hover" component={RouterLink}>
           <Typography variant="body1" noWrap>
             {name}

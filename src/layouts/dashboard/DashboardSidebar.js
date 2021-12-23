@@ -52,14 +52,9 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           <Logo />
         </Box>
       </Box>
-      <Typography align="left" color="gray" paddingLeft="2em">
-        MAIN
-      </Typography>
-      <NavSection navConfig={sidebarConfig} />
-      <Typography align="left" color="gray" paddingLeft="2em" paddingTop="3em">
-        ACCOUNT
-      </Typography>
-      <NavSection navConfig={accountSideBarConfig} />
+      {renderSideBarSection('MAIN', sidebarConfig)}
+      {renderSideBarSection('ACCOUNT', accountSideBarConfig)}
+
       <Box sx={{ flexGrow: 1 }} />
     </Scrollbar>
   );
@@ -94,4 +89,15 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       </MHidden>
     </RootStyle>
   );
+
+  function renderSideBarSection(title, navConfig) {
+    return (
+      <>
+        <Typography align="left" color="#00000040" paddingLeft="2em">
+          {title}
+        </Typography>
+        <NavSection navConfig={navConfig} />
+      </>
+    );
+  }
 }

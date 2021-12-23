@@ -18,7 +18,7 @@ const ListItemStyle = styled((props) => <ListItemButton disableGutters {...props
     textTransform: 'capitalize',
     paddingLeft: theme.spacing(5),
     paddingRight: theme.spacing(2.5),
-    color: theme.palette.text.secondary,
+    color: '#1F4173',
     '&:before': {
       top: 0,
       right: 0,
@@ -60,9 +60,9 @@ function NavItem({ item, active }) {
   };
 
   const activeRootStyle = {
-    color: 'primary.main',
+    color: '#1F4173',
     fontWeight: 'fontWeightMedium',
-    bgcolor: alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
+    bgcolor: alpha('#1F417333', theme.palette.action.selectedOpacity),
     '&:before': { display: 'block' }
   };
 

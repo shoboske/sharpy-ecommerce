@@ -9,6 +9,7 @@ import {
   Grid,
   IconButton,
   Stack,
+  styled,
   TextField,
   Tooltip,
   Typography
@@ -22,6 +23,10 @@ import Page from '../../components/Page';
 import PRODUCTS from '../../_mocks_/products';
 
 // ----------------------------------------------------------------------
+
+const TextFieldStyle = styled((props) => <TextField variant="filled" {...props} />)({
+  backgroundColor: '#C4C4C4'
+});
 
 export default function Inventory() {
   const [product] = useState(PRODUCTS[0]);
@@ -48,38 +53,47 @@ export default function Inventory() {
           <Grid item xs={12} md={8}>
             <Stack direction="column" spacing={2}>
               <Stack spacing={1}>
-                <TextField
+                <TextFieldStyle
                   id="product-name"
                   label="Product name"
-                  variant="filled"
                   defaultValue={product.name}
                 />
-                <TextField
+                <TextFieldStyle
                   multiline
                   rows={4}
                   id="product-description"
                   label="Product description"
-                  variant="filled"
                   defaultValue={product.name}
                 />
-                <TextField id="categories" label="Categories" variant="filled" />
-                <TextField id="price" label="Price" variant="filled" />
+                <TextFieldStyle id="categories" label="Categories" />
+                <TextFieldStyle id="price" label="Price" />
               </Stack>
               <Stack spacing={1}>
                 <Typography variant="h4">Options</Typography>
-                <TextField id="price-option" label="Price" variant="filled" />
+                <TextFieldStyle id="price-option" label="Price" />
 
                 <Typography variant="caption">Options</Typography>
-                <TextField id="option1" label="option1" variant="filled" />
-                <TextField id="option1" label="option2" variant="filled" />
+                <TextFieldStyle id="option1" label="option1" />
+                <TextFieldStyle id="option1" label="option2" />
               </Stack>
             </Stack>
             <Stack marginTop={5}>
-              <ButtonGroup size="large" variant="contained" fullWidth>
-                <Button color="inherit" component={Link} to="/dashboard/inventory">
+              <ButtonGroup size="large" variant="contained" fullWidth color="inherit">
+                <Button
+                  color="inherit"
+                  sx={{ backgroundColor: '#949494' }}
+                  component={Link}
+                  to="/dashboard/inventory"
+                >
                   Cancel
                 </Button>
-                <Button color="secondary" fullWidth component={Link} to="/dashboard/inventory">
+                <Button
+                  color="secondary"
+                  sx={{ backgroundColor: '#1F4173' }}
+                  fullWidth
+                  component={Link}
+                  to="/dashboard/inventory"
+                >
                   Add Product
                 </Button>
               </ButtonGroup>
